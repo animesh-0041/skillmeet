@@ -1,0 +1,33 @@
+#comment{
+    padding: 0 15px;
+    color: #3F4D5A;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    img{
+        width: 100%;
+        max-width: 400px;
+    }
+    p{
+        font-weight: 400;
+    }
+
+    ul {
+        list-style: initial;
+    }
+
+    li {
+        margin-left: 15px;
+    }
+
+    pre{
+        background-color: #23241f;
+        color: #f8f8f2;
+        font-size: 12px;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        padding: 7px 10px;
+    }
+}
