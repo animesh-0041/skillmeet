@@ -12,7 +12,7 @@ const s3 = new AWS.S3();
 
 const uploadImageToS3 = (file) => {
     const params = {
-        Bucket: 'awspracticesosbucket',
+        Bucket: process.env.REACT_APP_BUCKET_NAME,
         Key: file.name,
         Body: file,
         ContentType: file.type || 'image/png',

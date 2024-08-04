@@ -1,9 +1,9 @@
 import AWS from "aws-sdk";
 
 AWS.config.update({
-  accessKeyId: "AKIAW3MEEG6JVMVHFPOS",
-  secretAccessKey: "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",
-  region: "eu-north-1",
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+  region: process.env.REACT_APP_REGION,
 });
 
 export default AWS;
