@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
     requestNotificationPermission();
   }, []);
+  
   return (
     <QueryClientProvider client={queryClient}>
       <UserProvider>
