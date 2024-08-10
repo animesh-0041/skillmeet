@@ -68,7 +68,7 @@ export const TextEditor = ({ editorInstance = null, writeType, editData }) => {
                     {
                         type: 'header',
                         data: {
-                            text: 'Blog title',
+                            text: 'BLOG TITLE',
                             level: 2,
                         },
                     },
@@ -159,9 +159,10 @@ export const TextEditor = ({ editorInstance = null, writeType, editData }) => {
 
                     // Focus on the header block
                     const headerBlockIndex = 0; // assuming the header block is the first one
-                    editorInstance.current.blocks
-                        .getBlockByIndex(headerBlockIndex)
-                        .holder.querySelector('.ce-header').focus();
+                    const block = editorInstance.current.blocks.getBlockByIndex(headerBlockIndex);
+                    if (block) {
+                        block.holder.querySelector('.ce-header').focus();
+                    }
                 },
             });
         };

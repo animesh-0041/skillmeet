@@ -6,45 +6,41 @@ import { FeedProfile } from "./FeedProfile.jsx"
 
 
 export const FeedContent = (props) => {
-    const { title, desc, image, name, username, icon, date, blogUrl, read } = props;
+    const { title, desc, image, name, username, followers, icon, date, blogUrl, read, queryType } = props;
 
     return (
-        <div className="w-full flex flex-col gap-5 cursor-pointer">
+        <div className="w-full flex flex-col md:flex-row gap-4 cursor-pointer">
+            {image && <div className="w-full h-[250px] md:w-[300px] md:h-[160px] flex flex-row justify-center items-center rounded bg-black-25">
+                <img
+                    src={image}
+                    loading="lazy"
+                    className="w-full max-w-[350px] h-[250px] md:w-full md:h-full rounded"
+                />
+            </div>}
 
-            <div className="w-full flex flex-row gap-4">
-                {image && <div className="w-[300px] h-[160px]">
-                    <img
-                        src={image}
-                        loading="lazy"
-                        alt="POST-IMG"
-                        className="w-full h-full rounded"
+
+            <div className="w-full flex flex-col justify-between gap-3">
+                <div className="w-full flex flex-col gap-3">
+                    <FeedProfile
+                        name={name}
+                        icon={icon}
+                        date={date}
+                        blogUrl={blogUrl}
+                        username={username}
+                        queryType={queryType}
+                        followers={followers}
                     />
-                </div>}
-
-
-                <div className="w-full flex flex-col justify-between gap-3">
-                    <div className="w-full flex flex-col gap-3">
-                        <FeedProfile
-                            name={name}
-                            icon={icon}
-                            date={date}
-                            username={username}
-                            blogUrl={blogUrl}
-                        />
-                        <Paragraph type={'heading'}>{title}</Paragraph>
-                        <div
-                            style={ellipsisType({ line: 3, height: '60px' })}
-                            className='font-Golos text-[11px] tracking-wide leading-5 font-normal text-[#666]'
-                            dangerouslySetInnerHTML={{ __html: desc }}
-                        />
-                    </div>
-
-                    <div>
-                        <FeedFunc read={read} />
-                    </div>
+                    <p className="font-Golos text-base md:text-xl tracking-tighter leading-5 font-semibold opacity-85 text-black-700">{title}</p>
+                    <div
+                        style={ellipsisType({ line: 3, height: '60px' })}
+                        className='font-Golos text-[10px] md:text-xs tracking-wide leading-5 font-normal text-[#666]'
+                        dangerouslySetInnerHTML={{ __html: desc }}
+                    />
                 </div>
-            </div>
-            <div>
+
+                <div>
+                    <FeedFunc read={read} />
+                </div>
             </div>
         </div>
     )

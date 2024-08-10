@@ -23,6 +23,6 @@ export const EditCategoryOptionHover = [
     { type: "create", logo: <GoPlusCircle size={'20px'} className="text-black-75" /> },
 ];
 
-export const TypeOfPost = ['blog', 'tech', 'bugs', 'error', 'bussines', 'travel', 'economic'];
+export const TypeOfPost = ['blog', 'tech', 'bugs', 'science', 'error', 'bussines', 'programing', 'economic'];
 
 export const TypeOfSearch = ['stories', 'people', 'project'];

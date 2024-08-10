@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import AWS from "aws-sdk";
 
 AWS.config.update({

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Layout } from '../../components/layout/Layout'
 import { Feeds } from './ProfileBarList/Feeds.jsx'
 import { useParams } from 'react-router-dom';
-import { BlogUser, validMyprofile } from '../../components/Helper/Helper.js';
+import { validMyprofile } from '../../components/Helper/Helper.js';
 import { useQuery } from '@tanstack/react-query';
 import { getProfile, getProfileBlog } from '../../service/quiries/UserAuth.js';
 import { ProfileBanner } from './ProfileBanner.jsx';
@@ -47,6 +47,7 @@ export const Profile = () => {
                 return <Feeds
                     profileData={profileBlogData}
                     userData={profileData}
+                    queryType={["getprofiledata", user, activeprofileBar]}
                 />
             case 'about':
                 return <About
@@ -75,9 +76,10 @@ export const Profile = () => {
 
     return (
         <Layout>
-            <div id='hide_scrollbar' className='w-full h-content overflow-y-scroll relative flex flex-col gap-12 px-10 pt-4'>
+            <div id='hide_scrollbar' className='w-full h-content px-4 md:px-10 pt-4 overflow-y-scroll relative flex flex-col gap-12'>
 
                 <ProfileBanner
+                    user={user}
                     id={profileData?._id}
                     name={profileData?.name}
                     profileData={profileData}
@@ -91,7 +93,7 @@ export const Profile = () => {
                             <button
                                 key={ind}
                                 onClick={() => setActiveProfileBar(item)}
-                                className={`w-fit px-5 py-[6px] font-Golos text-sm font-normal whitespace-nowrap capitalize ${activeprofileBar !== item ? 'text-black-700 border-0' : 'text-black-900 border-b border-black-500'}`}
+                                className={`w-fit px-5 py-[6px] font-Golos text-xs md:text-sm font-normal whitespace-nowrap capitalize ${activeprofileBar !== item ? 'text-black-700 border-0' : 'text-black-900 border-b border-black-500'}`}
                             >
                                 {item}
                             </button>

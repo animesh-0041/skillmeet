@@ -42,7 +42,7 @@ export const Books = () => {
         mutationFn: deletePage,
         onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ["getindividualbook", url] });
-            queryClient.invalidateQueries({ queryKey:  ["getindividualpage", currentPage] });
+            queryClient.invalidateQueries({ queryKey: ["getindividualpage", currentPage] });
             toast.success(data?.msg, { style: { borderRadius: '10px', background: '#333', color: '#fff' } });
         },
         onError: (error) => {
@@ -122,7 +122,7 @@ export const Books = () => {
 
     const handleFilter = (id) => {
         // return booklistData?.pages?.filter(item => item.id !== id);
-        
+
         const data = { ...booklistData };
         data.pages = booklistData?.pages?.filter(page => page?.id !== id);
         return data;
@@ -140,7 +140,7 @@ export const Books = () => {
         }
     }
 
-    console.log(booklistData, 'booklistData');
+    // console.log(booklistData, 'booklistData');
 
     return (
         <Layout>
@@ -218,11 +218,13 @@ export const Books = () => {
                     </div>
 
                     <div id='hide_scrollbar' className='w-[calc(100%-220px)] h-content overflow-y-auto'>
-                        <BookPage
-                            currentPage={currentPage}
-                            PostData={bookData}
-                            isEditAble={validMyprofile(bookData?.username)}
-                        />
+                        {bookData &&
+                            <BookPage
+                                currentPage={currentPage}
+                                PostData={bookData}
+                                isEditAble={validMyprofile(bookData?.username)}
+                            />
+                        }
                     </div>
                 </div>
             }

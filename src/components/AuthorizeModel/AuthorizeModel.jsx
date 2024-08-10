@@ -1,8 +1,8 @@
 import { useUser } from "../../Providers/UseContent";
 import { Model } from "../common/Model/Model";
 import { PiWarningCircle } from "react-icons/pi";
-import './styles.scss'; // Make sure to import your CSS file
 import { useNavigate } from "react-router-dom";
+import './styles.scss';
 
 export const AuthorizeModel = () => {
     const { isAuthorizeModel, closeAuthorizeModel } = useUser();
@@ -17,7 +17,7 @@ export const AuthorizeModel = () => {
         <Model isOpen={isAuthorizeModel} closeModel={closeAuthorizeModel} type="pop-up">
             <div className="w-full flex flex-col items-center gap-4">
                 <PiWarningCircle size={50} className="text-orange-600 pulse-animation" />
-                <p className="font-Golos font-medium text-xs text-center leading-5 text-black-500">Oops! It looks like you're not logged in. Please log in to like this content and enjoy more features!</p>
+                <p className="font-Golos font-medium text-xs text-center leading-5 text-black-500">Oops! It looks like you're not logged in. Please log in to enjoy more features!</p>
                 <div className="w-full flex flex-row gap-4">
                     <button
                         onClick={() => closeAuthorizeModel()}

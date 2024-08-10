@@ -6,7 +6,7 @@ import { validMyprofile } from "../Helper/Helper"
 
 
 export const FeedProfile = (props) => {
-    const { icon, name, username, date, blogUrl } = props;
+    const { icon, name, username, date, blogUrl, queryType, followers } = props;
 
     const validMenuType = () => {
         if (validMyprofile(username)) {
@@ -20,7 +20,13 @@ export const FeedProfile = (props) => {
         <div className="flex flex-row justify-between">
             <div className="w-fit flex flex-row items-center gap-3">
                 <div>
-                    <PopupDropDown type={'UserProfile'} icon={icon} name={name} username={username}>
+                    <PopupDropDown
+                        type={'UserProfile'}
+                        icon={icon}
+                        name={name}
+                        username={username}
+                        followers={followers}
+                    >
                         {icon ?
                             <img
                                 src={icon || 'https://cdn-icons-png.flaticon.com/128/1999/1999625.png'}
@@ -38,7 +44,7 @@ export const FeedProfile = (props) => {
                 </div>
             </div>
 
-            <PopupDropDown type={validMenuType()} blogUrl={blogUrl}>
+            <PopupDropDown queryType={queryType} type={validMenuType()} blogUrl={blogUrl}>
                 <div className="px-3">
                     <GoKebabHorizontal size={'15px'} className="text-black-75" />
                 </div>

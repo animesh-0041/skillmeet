@@ -15,8 +15,8 @@ export const BlogWrite = async (write) => {
   return data;
 };
 
-export const GetPostData = async () => {
-  const { data } = await apiService.get("/post/allposts");
+export const GetPostData = async (url) => {
+  const { data } = await apiService.get(`/post/allposts${url}`);
   return data;
 };
 
@@ -117,3 +117,8 @@ export const getFirendHistory = async (url) => {
   const { data } = await apiServiceWithToken.get(`/chat/history?${url}`);
   return data;
 };
+
+export const deleteBlog = async (url) =>{
+  const { data } = await apiServiceWithToken.delete(`/post/delete/${url}`);
+  return data;
+}

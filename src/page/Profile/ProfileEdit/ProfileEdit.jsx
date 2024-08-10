@@ -63,6 +63,7 @@ const editProfile = [
 
 
 const initialEditDetails = {
+    skills: [],
     company: '',
     collage: '',
     school: '',
@@ -76,6 +77,8 @@ const initialEditDetails = {
 
 function editReducer(state, action) {
     switch (action.type) {
+        case "SET_SKILLS":
+            return { ...state, skills: action.payload };
         case "SET_COMPANY":
             return { ...state, company: action.payload };
         case "SET_COLLAGE":
@@ -102,9 +105,9 @@ function editReducer(state, action) {
 }
 
 export const ProfileEdit = ({ user, isOpen, closeModel }) => {
-    const [postType, setPostType] = useState([]);
     const [editDetails, dispatch] = useReducer(editReducer, initialEditDetails);
     const [updateLoading, setUpdateLoading] = useState(false);
+    const [skills, setSkills] = useState([]);
     const queryClient = useQueryClient();
 
     const {
@@ -149,18 +152,25 @@ export const ProfileEdit = ({ user, isOpen, closeModel }) => {
 
     useEffect(() => {
         if (profileBlogData) {
-            setPostType(profileBlogData?.skills);
-            dispatch({ type: "SET_COMPANY", payload: profileBlogData?.company });
-            dispatch({ type: "SET_COLLAGE", payload: profileBlogData?.collage });
-            dispatch({ type: "SET_SCHOOL", payload: profileBlogData?.school });
-            dispatch({ type: "SET_CURRENT_CITY", payload: profileBlogData?.current_city });
-            dispatch({ type: "SET_ADD_HOMETOWN", payload: profileBlogData?.add_hometown });
-            dispatch({ type: "SET_EMAIL", payload: profileBlogData?.email });
-            dispatch({ type: "SET_PHONENUMBER", payload: profileBlogData?.phoneNumber });
-            dispatch({ type: "SET_GENDER", payload: profileBlogData?.gender });
-            dispatch({ type: "SET_BIRTHDAY", payload: profileBlogData?.birthday });
+            setSkills(profileBlogData?.skills);
+            dispatch({ type: "SET_SKILLS", payload: profileBlogData?.skills || [] });
+            dispatch({ type: "SET_COMPANY", payload: profileBlogData?.company || '' });
+            dispatch({ type: "SET_COLLAGE", payload: profileBlogData?.collage || '' });
+            dispatch({ type: "SET_SCHOOL", payload: profileBlogData?.school || '' });
+            dispatch({ type: "SET_CURRENT_CITY", payload: profileBlogData?.current_city || '' });
+            dispatch({ type: "SET_ADD_HOMETOWN", payload: profileBlogData?.add_hometown || '' });
+            dispatch({ type: "SET_EMAIL", payload: profileBlogData?.email || '' });
+            dispatch({ type: "SET_PHONENUMBER", payload: profileBlogData?.phoneNumber || '' });
+            dispatch({ type: "SET_GENDER", payload: profileBlogData?.gender || '' });
+            dispatch({ type: "SET_BIRTHDAY", payload: profileBlogData?.birthday || '' });
         }
     }, [profileBlogData]);
+
+    useEffect(() => {
+        if (skills) {
+            dispatch({ type: "SET_SKILLS", payload: skills });
+        }
+    }, [skills]);
 
     return (
         <Model isOpen={isOpen} closeModel={closeModel} type="right-side">
@@ -177,8 +187,8 @@ export const ProfileEdit = ({ user, isOpen, closeModel }) => {
                                 {edit.name === 'skills' ? (
                                     <MultiTagEdit
                                         profileBar
-                                        postType={postType}
-                                        setPostType={setPostType}
+                                        postType={skills}
+                                        setPostType={setSkills}
                                     />
                                 ) : (
                                     edit?.value?.map((item, ind) => (

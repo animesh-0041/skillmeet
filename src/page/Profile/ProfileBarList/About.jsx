@@ -78,7 +78,7 @@ export const About = ({ profileData }) => {
                     {about?.value?.map((item, ind) => (
                         <div key={ind} className="w-full flex flex-row items-center gap-4">
                             <span>{item.icon}</span>
-                            <p className={`font-Golos font-normal text-sm leading-4 text-black-500 ${item.name !== 'email' && "capitalize"}`}>{profileData && profileData[item.name] || '---'}</p>
+                            <p className={`font-Golos font-normal text-xs md:text-sm leading-4 text-black-500 ${item.name !== 'email' && "capitalize"}`}>{profileData && profileData[item.name] || '---'}</p>
                         </div>
                     ))}
                 </>

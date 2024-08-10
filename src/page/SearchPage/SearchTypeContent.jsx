@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ellipsisType, Statistic } from "../../components/Helper/Tools.jsx";
 import { GoKebabHorizontal } from "react-icons/go";
 
-export const SearchTypeContent = ({ searchData, SearchType }) => {
+export const SearchTypeContent = ({ searchData, SearchType, queryType }) => {
     const navigation = useNavigate();
 
     switch (SearchType) {
@@ -24,6 +24,7 @@ export const SearchTypeContent = ({ searchData, SearchType }) => {
                             title={el?.blogHeader?.header?.data?.text || ''}
                             desc={el?.blogHeader?.paragraph?.data?.text || ''}
                             image={el?.blogHeader?.image?.data?.url || el?.blogHeader?.image?.data?.file?.url || ''}
+                            queryType={queryType}
                             date={el?.createdAt}
                             blogUrl={el?.url}
                             read={el?.view}

@@ -8,7 +8,7 @@ import { ellipsisType } from "../../../components/Helper/Tools.jsx";
 import { FeedContent } from "../../../components/Feeds/FeedContent.jsx";
 import { Breaker } from "../../../components/common/Breaker/Breaker.jsx";
 
-export const Feeds = ({ profileData, userData }) => {
+export const Feeds = ({ profileData, userData, queryType }) => {
     const navigation = useNavigate();
 
 
@@ -21,12 +21,12 @@ export const Feeds = ({ profileData, userData }) => {
 
 
     return (
-        <div className="w-full flex flex-col gap-6">
+        <div className="w-full flex flex-col gap-10 px-4 md:p-0">
             {profileData && profileData?.map((el, index) => (
                 <div
                     key={index}
                     onClick={() => navigation(`/${formatString(userData?.username) || 'author'}/${el?.url}`)}
-                    className="flex flex-wrap gap-3"
+                    className="flex flex-wrap gap-10"
                 >
                     <FeedContent
                         icon={userData?.photoURL}
@@ -35,6 +35,7 @@ export const Feeds = ({ profileData, userData }) => {
                         title={el?.blogHeader?.header?.data?.text || ''}
                         desc={el?.blogHeader?.paragraph?.data?.text || ''}
                         image={el?.blogHeader?.image?.data?.url || el?.blogHeader?.image?.data?.file?.url || ''}
+                        queryType={queryType}
                         date={el?.createdAt}
                         blogUrl={el?.url}
                         read={el?.view}

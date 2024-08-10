@@ -58,19 +58,19 @@ export const SearchPage = () => {
 
     return (
         <Layout>
-            <div className="w-full flex flex-col pt-8 px-14 justify-center items-center gap-8">
+            <div className="w-full flex flex-col pt-8 px-4 md:px-14 justify-center items-center gap-8">
 
-                <div className="md:w-full w-[80%] max-w-[500px] relative flex flex-row justify-between bg-opacity-0 rounded-51">
+                <div className="w-full md:w-[80%] max-w-[350px] md:max-w-[500px] relative flex flex-row justify-between bg-opacity-0 rounded-51">
                     <input
                         type="text"
                         value={search}
                         placeholder="Search here"
                         onChange={(e) => setSearch(e.target.value)}
                         onKeyDown={handleSearchKey}
-                        className="w-full md:h-14 h-10 rounded-51 pl-6 pr-12 py-1 font-Golos text-sm leading-5 text-black-500 border transform transition duration-300 bg-black-25 border-black-50 focus:border-black-300"
+                        className="w-full md:h-14 h-10 rounded-51 pl-4 md:pl-6 pr-12 py-1 font-Golos text-sm leading-5 text-black-500 border transform transition duration-300 bg-black-25 border-black-50 focus:border-black-300"
                     />
-                    <button onClick={handleSearch} className="flex flex-row justify-center items-center absolute p-[7px] right-2 top-2 rounded-full bg-black-900 hover:bg-black-700 active:bg-black-500">
-                        <RiSearchLine size={25} className="text-black-25" />
+                    <button onClick={handleSearch} className="flex flex-row justify-center items-center absolute p-[7px] top-1 right-1 md:right-2 md:top-2 rounded-full bg-black-900 hover:bg-black-700 active:bg-black-500">
+                        <RiSearchLine className="text-black-25 size-4 md:size-6" />
                     </button>
                 </div>
 
@@ -80,15 +80,15 @@ export const SearchPage = () => {
 
 
                 {searchData &&
-                    <div className="w-full pt-6 flex flex-col gap-6">
-                        <h2 className="font-Golos font-semibold text-center text-lg leading-5 text-black-700">{!searchData?.data?.length ? 'No matching for' : 'Matching'} "{actualSearch}"</h2>
+                    <div className="w-full mt-1 md:pt-6 flex flex-col gap-6 px-4 md:p-0">
+                        <h2 className="font-Golos font-semibold text-center text-base md:text-lg leading-5 text-black-700">{!searchData?.data?.length ? 'No matching for' : 'Matching'} "{actualSearch}"</h2>
 
                         <div className="w-full flex flex-row gap-4">
                             {TypeOfSearch && TypeOfSearch.map((item, ind) => (
                                 <button
                                     key={ind}
                                     onClick={() => setSearchType(item)}
-                                    className={`w-fit px-5 py-[6px] font-Golos text-sm font-normal whitespace-nowrap  capitalize ${SearchType !== item ? 'text-black-700 border-0' : 'text-black-900 border-b border-black-500'}`}
+                                    className={`w-fit px-5 py-[6px] font-Golos text-xs md:text-sm font-normal whitespace-nowrap capitalize ${SearchType !== item ? 'text-black-700 border-0' : 'text-black-900 border-b border-black-500'}`}
                                 >
                                     {item}
                                 </button>
@@ -98,6 +98,7 @@ export const SearchPage = () => {
                         <SearchTypeContent
                             searchData={searchData}
                             SearchType={SearchType}
+                            queryType={["getsearchdata", actualSearch, SearchType]}
                         />
 
                     </div>

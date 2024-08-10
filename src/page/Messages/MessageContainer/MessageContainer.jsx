@@ -154,7 +154,7 @@ export const MessageContainer = ({ userData }) => {
                             inverse={true}
                             hasMore={true}
                             next={() => fetchNextPage()}
-                            dataLength={articles?.length}
+                            dataLength={articles?.length || 0}
                             scrollableTarget="scrollableDiv"
                         >
                             {articles.map((chat, ind) => (

@@ -13,6 +13,8 @@ import { SearchPage } from '../page/SearchPage/SearchPage';
 import { EditPost } from '../page/EditPost/EditPost';
 import { Books } from '../page/Books/Books.jsx';
 import { MessagesHome } from '../page/Messages/MessagesHome.jsx';
+import { PrivacyPolicy } from '../page/PrivacyPolicy/PrivacyPolicy.jsx';
+import { About } from '../page/About/About.jsx';
 
 export const MainRouter = () => {
   return (
@@ -21,10 +23,11 @@ export const MainRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/:author/:url" element={<IndividualPost />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/about" element={<About />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/book/:url" element={<Books />} />
         <Route path="/:user" element={<Profile />} />
-
 
         {/* Public Routes */}
         <Route element={<PublicRoute />}>

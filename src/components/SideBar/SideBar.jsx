@@ -65,7 +65,7 @@ const BooksRecommend = ({ name, profileUrl, desc }) => {
 export const SideBar = () => {
 
     return (
-        <div id="hide_scrollbar" className="w-full h-content pb-10 flex flex-col gap-6 overflow-scroll">
+        <div id="hide_scrollbar" className="w-full h-full pb-10 flex flex-col gap-6 overflow-scroll">
 
             {/* Card Show */}
             <div className="w-full px-4 py-2 flex flex-col gap-2 rounded bg-black-25">

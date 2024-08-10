@@ -94,7 +94,6 @@ export const Register = () => {
     } = useMutation({
         mutationFn: UserAuth,
         onSuccess: (data) => {
-            console.log(data);
             Cookies.set('blog_user', JSON.stringify(data.user), { expires: 7, path: '/' });
             Cookies.set('token', data.token, { expires: 7, path: '/' });
             navigate('/');

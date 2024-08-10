@@ -40,7 +40,7 @@ export const ListBoxOption = ({ children, listoptions = [] }) => {
                 leaveTo="opacity-0"
             >
                 <ListboxOptions
-                    anchor="bottom center"
+                    anchor="bottom start"
                     className="w-[190px] block px-1 py-3 absolute z-[999] mt-4 border rounded bg-black-0 ring-black/5 focus:outline-none shadow-md border-t-[0.1px] -right-[0px]"
                 >
                     {listoptions && listoptions?.map((item, ind) => (
@@ -48,14 +48,14 @@ export const ListBoxOption = ({ children, listoptions = [] }) => {
                             key={ind}
                             value={item}
                             onClick={() => handleBoxOption(item)}
-                            className={`group px-4 py-2 flex flex-row items-center justify-start gap-3 bg-white rounded-12 cursor-pointer ${optionCheck(item?.name)?.bg}`}
+                            className={`group px-4 py-4 flex flex-row items-center justify-start gap-4 bg-white rounded-12 cursor-pointer ${optionCheck(item?.name)?.bg}`}
                         >
                             {item?.icon && item?.icon}
-                            <p className={`w-full text-xs font-Golos font-normal capitalize ${optionCheck(item?.name)?.text}`}>
+                            <p className={`w-full text-sm font-Golos font-normal capitalize ${optionCheck(item?.name)?.text}`}>
                                 {item.name}
                             </p>
 
-                            {(item?.name === 'login' || item?.name === 'register') && <RiArrowRightSLine size={'18px'} className="text-black-75" />}
+                            {(item?.name !== 'logout') && <RiArrowRightSLine size={'18px'} className="text-black-75" />}
                         </ListboxOption>
                     ))}
                 </ListboxOptions>
